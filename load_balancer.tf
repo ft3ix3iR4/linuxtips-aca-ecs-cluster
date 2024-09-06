@@ -20,7 +20,6 @@ resource "aws_security_group_rule" "ingress_80" {
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.lb.id
-  type              = "ingress"
 }
 
 resource "aws_security_group_rule" "ingress_443" {
@@ -31,17 +30,16 @@ resource "aws_security_group_rule" "ingress_443" {
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.lb.id
-  type              = "ingress"
 }
 
 resource "aws_lb" "main" {
     name        = format("%s-ingress", var.project_name)
     internal    = var.load_balancer_internal
-    type        = var.load_balancer_type
+    load_balancer_type = var.load_balancer_type
 
     subnets = [
-        data.aws_ssm_parameter.public_subnet_1a
-        data.aws_ssm_parameter.public_subnet_1b
+        data.aws_ssm_parameter.public_subnet_1a,
+        data.aws_ssm_parameter.public_subnet_1b,
         data.aws_ssm_parameter.public_subnet_1c
     ]
 

@@ -33,3 +33,10 @@ node_instance_type      = "t2.micro"
 node_volume_type        = "20"
 
 node_volume_size        = "gp3"
+
+
+cluster_on_demand_min_size = "2"
+
+cluster_on_demand_max_size = "4"
+
+cluster_on_demand_desired_size = "3"
