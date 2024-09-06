@@ -1,15 +1,15 @@
 resource "aws_security_group" "lb" {
-    name        = format("%s-load-balancer", var.project_name)
-    vpc_id      = data.aws_ssm_parameter.vpc.value
+  name   = format("%s-load-balancer", var.project_name)
+  vpc_id = data.aws_ssm_parameter.vpc.value
 
-    egress {
-        from_port   = 0
-        to_port     = 0
-        protocol    = "-1"
-        cidr_blocks = [
-            "0.0.0.0/0"
-        ]
-    }
+  egress {
+    from_port = 0
+    to_port   = 0
+    protocol  = "-1"
+    cidr_blocks = [
+      "0.0.0.0/0"
+    ]
+  }
 }
 
 resource "aws_security_group_rule" "ingress_80" {
@@ -33,34 +33,34 @@ resource "aws_security_group_rule" "ingress_443" {
 }
 
 resource "aws_lb" "main" {
-    name        = format("%s-ingress", var.project_name)
-    internal    = var.load_balancer_internal
-    load_balancer_type = var.load_balancer_type
+  name               = format("%s-ingress", var.project_name)
+  internal           = var.load_balancer_internal
+  load_balancer_type = var.load_balancer_type
 
-    subnets = [
-        data.aws_ssm_parameter.public_subnet_1a,
-        data.aws_ssm_parameter.public_subnet_1b,
-        data.aws_ssm_parameter.public_subnet_1c
-    ]
+  subnets = [
+    data.aws_ssm_parameter.public_subnet_1a,
+    data.aws_ssm_parameter.public_subnet_1b,
+    data.aws_ssm_parameter.public_subnet_1c
+  ]
 
-    security_groups = [
-        aws_security_group.lb.id
-    ]
+  security_groups = [
+    aws_security_group.lb.id
+  ]
 
-    enable_cross_zone_load_balancing    = false
-    enable_deletion_protection          = false
+  enable_cross_zone_load_balancing = false
+  enable_deletion_protection       = false
 }
 
 resource "aws_lb_listener" "main" {
-    load_balancer_arn                   = aws_lb.main.arn
-    port                                = 80
-    protocol                               = "HTTP"
-    default_action {
-        type        = "fixed_response"
-        fixed_response {
-            content_type = "text/plain"
-            message_body = "LinuxTips"
-            status_code  = "200"
-        }
+  load_balancer_arn = aws_lb.main.arn
+  port              = 80
+  protocol          = "HTTP"
+  default_action {
+    type = "fixed_response"
+    fixed_response {
+      content_type = "text/plain"
+      message_body = "LinuxTips"
+      status_code  = "200"
     }
+  }
 }

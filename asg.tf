@@ -9,17 +9,17 @@ resource "aws_autoscaling_group" "on_demand" {
 
 
   desired_capacity = var.cluster_on_demand_desired_size
-  max_size = var.cluster_on_demand_max_size
-  min_size = var.cluster_on_demand_min_size
+  max_size         = var.cluster_on_demand_max_size
+  min_size         = var.cluster_on_demand_min_size
 
-    launch_template {
-      id = aws_launch_template.on_demand.id
-      version = aws_launch_template.on_demand.latest_version
-    }
+  launch_template {
+    id      = aws_launch_template.on_demand.id
+    version = aws_launch_template.on_demand.latest_version
+  }
 
-    tag {
-      key = "AmazonECSManaged"
-      value = true
-      propagate_at_launch = true
-    }
+  tag {
+    key                 = "AmazonECSManaged"
+    value               = true
+    propagate_at_launch = true
+  }
 }
