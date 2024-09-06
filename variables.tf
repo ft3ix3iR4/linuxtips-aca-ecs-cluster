@@ -1,6 +1,6 @@
 #### GENERAL CONFIGUTATIONS ####
 
-variable "projec_name" {}
+variable "project_name" {}
 
 variable "region" {}
 

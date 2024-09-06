@@ -1,5 +1,5 @@
 resource "aws_security_group" "main" {
-    name        = format("%s", var.projec_name)
+    name        = format("%s", var.project_name)
     vpc_id      = data.aws_ssm_parameter.vpc.value
 
     egress {
