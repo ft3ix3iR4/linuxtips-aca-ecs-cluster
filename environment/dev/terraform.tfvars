@@ -26,9 +26,9 @@ load_balancer_type = "application"
 
 #### ECS GENERAL ####
 
-node_ami = "ami-0a5c3558529277641"
+node_ami = "ami-09d3335e2eaf06692"
 
-node_instance_type = "t2.micro"
+node_instance_type = "t3.large"
 
 node_volume_type = "gp3"
 
