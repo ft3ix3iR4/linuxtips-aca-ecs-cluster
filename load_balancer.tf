@@ -16,7 +16,7 @@ resource "aws_security_group_rule" "ingress_80" {
   type              = "ingress"
   from_port         = 80
   to_port           = 80
-  description       = "Liberando tráfego na porta 80."
+  description       = "Liberando trafego na porta 80."
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.lb.id
@@ -26,7 +26,7 @@ resource "aws_security_group_rule" "ingress_443" {
   type              = "ingress"
   from_port         = 443
   to_port           = 443
-  description       = "Liberando tráfego na porta 443."
+  description       = "Liberando trafego na porta 443."
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.lb.id
@@ -56,7 +56,7 @@ resource "aws_lb_listener" "main" {
   port              = 80
   protocol          = "HTTP"
   default_action {
-    type = "fixed_response"
+    type = "fixed-response"
     fixed_response {
       content_type = "text/plain"
       message_body = "LinuxTips"
