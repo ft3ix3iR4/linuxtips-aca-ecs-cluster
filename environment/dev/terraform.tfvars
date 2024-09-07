@@ -32,7 +32,7 @@ node_instance_type = "t3.large"
 
 node_volume_type = "gp3"
 
-node_volume_size = "20"
+node_volume_size = "60"
 
 
 cluster_on_demand_min_size = "2"
