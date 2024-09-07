@@ -4,7 +4,7 @@ resource "aws_launch_template" "on_demand" {
 
   instance_type = var.node_instance_type
 
-  vpc_security_groups_ids = [
+  vpc_security_group_ids = [
     aws_security_group.main.id
   ]
 
@@ -21,6 +21,7 @@ resource "aws_launch_template" "on_demand" {
       volume_size = var.node_volume_size
       volume_type = var.node_volume_type
     }
+  }
 
     tag_specifications {
       resource_type = "instance"
@@ -33,4 +34,3 @@ resource "aws_launch_template" "on_demand" {
       CLUSTER_NAME = var.project_name
     }))
   }
-}

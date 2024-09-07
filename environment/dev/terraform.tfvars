@@ -26,7 +26,7 @@ load_balancer_type = "application"
 
 #### ECS GENERAL ####
 
-node_ami = ""
+node_ami = "ami-0182f373e66f89c85"
 
 node_instance_type = "t2.micro"
 
