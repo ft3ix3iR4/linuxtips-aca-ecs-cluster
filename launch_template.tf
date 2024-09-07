@@ -23,14 +23,14 @@ resource "aws_launch_template" "on_demand" {
     }
   }
 
-    tag_specifications {
-      resource_type = "instance"
-      tags = {
-        Name = format("%s-on-demand", var.project_name)
-      }
+  tag_specifications {
+    resource_type = "instance"
+    tags = {
+      Name = format("%s-on-demand", var.project_name)
     }
-
-    user_data = base64encode(templatefile("${path.module}/templates/user-data.tpl", {
-      CLUSTER_NAME = var.project_name
-    }))
   }
+
+  user_data = base64encode(templatefile("${path.module}/templates/user-data.tpl", {
+    CLUSTER_NAME = var.project_name
+  }))
+}
