@@ -9,7 +9,7 @@ resource "aws_launch_template" "on_demand" {
   ]
 
   iam_instance_profile {
-    name = aws_iam_instance_profile.main.name
+    name = "ecsInstanceRole"
   }
 
   update_default_version = true
