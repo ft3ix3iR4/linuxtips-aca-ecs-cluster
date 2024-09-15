@@ -28,7 +28,7 @@ load_balancer_type = "application"
 
 node_ami = "ami-07ae7190a74b334a0"
 
-node_instance_type = "t3.large"
+node_instance_type = "t3.xlarge"
 
 node_volume_type = "gp3"
 
